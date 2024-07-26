@@ -1,7 +1,10 @@
+import GameList from '../components/GameList'
 
 const List = () => {
   return (
-    <div>List</div>
+    <div>
+      <GameList/>
+    </div>
   )
 }
 
