@@ -1,0 +1,51 @@
+.container-game-list{
+    width: 100%;
+    background-color: #F8F8F8;
+    padding: 2rem 1rem;
+    font-family: 'Montserrat';
+}
+
+.tbl-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #E5E5E5;
+    padding: 1rem 0.5rem;
+}
+
+.tbl-header h2{
+    font-size: 1.5rem;
+}
+
+.tbl-header button{
+    font-size: 1.0rem;
+    background: #089B1F;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem; 
+    padding: 1rem 2.5rem;
+}
+
+.tbl-header button:hover{
+    background: #07871a;
+    cursor: pointer;
+}
+
+.tbl{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1rem;
+}
+
+.tbl thead tr th{
+    font-size: 0.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: left;
+    color: #ACACAC;
+}
+
+thead tr th:first-child{
+    padding-right: 9rem;
+}
