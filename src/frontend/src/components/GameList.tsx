@@ -1,26 +1,40 @@
-import React from 'react'
 import Game from './Game'
 import './game.css'
+import './gameList.css'
 
 const GameList = () => {
   return (
     
-    <div className='table'>
-        <div className='table-header'>
-            <div className='table-cell-header'></div>
-            <div className='table-cell-header'>Name</div>
-            <div className='table-cell-header'>Description</div>
-            <div className='table-cell-header'>Price</div>
-            <div className='table-cell-header'>Category</div>
-            <div className='table-cell-header'>Date of include</div>
-            <div className='table-cell-header'></div>
+    <div className="container-game-list">
+      <div className="tbl-container">
+        <div className="tbl-header">
+          <h2>Games List</h2>
+          <button>ADD NEW GAME</button>
         </div>
-        <div className='table-body'>
+        <table className="tbl">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Date of include</th>
+              <th colSpan={2}></th>
+            </tr>
+          </thead>
+          <tbody>
             <Game/>
             <Game/>
             <Game/>
             <Game/>
-        </div>
+            <Game/>
+            <Game/>
+            <Game/>
+            <Game/>
+          </tbody>
+        </table>
+      </div>
     </div>
 
   )

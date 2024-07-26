@@ -1,78 +1,92 @@
-.table {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-.table-header, .table-row {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-}
-  
-.table-cell-header {
-    display: flex;
-    flex: 1;
-    padding: 8px;
+.tbl tbody tr td{
+    font-size: 1rem;
+    font-weight: normal;
     text-align: left;
-    align-items: center;
-    font-size: 1.1rem;
-}
-
-.table-cell {
-    display: flex;
-    flex: 1;
-    padding: 8px;
-    text-align: left;
-    align-items: center;
-    font-size: 1.2rem;
-    overflow: hidden;
-}
-
-.initials{
-    display: flex;
-    justify-content: center;
-    
-}
-  
-.table-header {
-    background-color: #f8f8f8;
-    color: #ACACAC;
-    height: 50px;
-}
-
-.table-row{
     background-color: #fff;
-    height: 85px;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: #000;
 }
-  
-@media (max-width: 600px) {
-    .table-header {
-      display: none;
-    }
-  
-    .table-row {
-      flex-direction: column;
-      border-bottom: none;
-      border: 1px solid #ddd;
-      margin-bottom: 10px;
-    }
-  
-    .table-cell {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px;
+
+tbody tr td:first-child{
+    text-align: center;
+    color: #089B1F;;
+    font-weight: 600;
+}
+
+
+td:first-child{
+  border-radius: 10px 0 0 10px;
+}
+
+
+td:last-child{
+  border-radius: 0 10px 10px 0;
+}
+
+.tbl button{
+    display: inline-block;
+    border: none;
+    margin: 0 auto;
+    padding: 0.2rem;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.tbl button:hover{
+    color: #07871a;
+}
+
+.btn-trash{
+    color: #089B1F;
+    background-color: #fff;
+
+}
+
+.btn-edit{
+    color: #089B1F;
+    background-color: #fff;
+}
+
+@media(max-width: 768px){ /* Responsividade gameList + game */
+
+    .tbl thead{
+        display: none;
     }
 
-    .table-cell-header {
+    .tbl-header{
         display: flex;
-        justify-content: space-between;
-        padding: 8px;
-      }
-  
-    .table-cell:before {
-      content: attr(data-label);
-      font-weight: bold;
-      flex: 1;
+        flex-direction: column;
+        width: 100%;
     }
+
+    .tbl-header h2{
+        margin-bottom: 1rem;
+    }
+
+    .tbl tr, .tbl td{
+        display: block;
+        flex-wrap: wrap;
+    }
+
+    .tbl tr{
+        margin-bottom: 3rem;
+    }
+
+    .tbl tbody tr td{
+        text-align: center;
+        position: relative;
+        border: 1px solid #aab7b8;
+    }
+
+    td:first-child{
+        border-radius: 0;
+    }
+      
+      
+    td:last-child{
+        border-radius: 0;
+    }
+
 }
