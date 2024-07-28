@@ -1,0 +1,7 @@
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10vh;
+    padding-left: 1rem;
+}
