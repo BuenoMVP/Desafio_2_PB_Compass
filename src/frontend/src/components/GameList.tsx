@@ -1,9 +1,14 @@
+import { useState } from 'react'
 import Game from './Game'
 import './game.css'
 import './gameList.css'
 import Menu from './Menu'
+import FormModal from './FormModal'
 
 const GameList = () => {
+  const [FormModalOpen, setFormModalOpen] = useState(false)
+
+
   return (
     <section id='game-list-section'>
       <Menu email='teste@example.com' url='GameList'/>
@@ -11,7 +16,8 @@ const GameList = () => {
         <div className="tbl-container">
           <div className="tbl-header">
             <h2>Games List</h2>
-            <button>ADD NEW GAME</button>
+            <button className="add-new-game-btn" onClick={() => setFormModalOpen(true)}>ADD NEW GAME</button>
+            {FormModalOpen && <FormModal/>}
           </div>
           <table className="tbl">
             <thead>
@@ -39,7 +45,6 @@ const GameList = () => {
         </div>
       </div>
     </section>
-
   )
 }
 
