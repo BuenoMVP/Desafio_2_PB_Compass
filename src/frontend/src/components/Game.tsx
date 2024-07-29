@@ -12,10 +12,10 @@ const Game = () => {
         <td>Detective</td>
         <td>08-Dec, 2021</td>
         <td>
-            <button className="btn-edit"><GoPencil/></button>
+            <button title="btn-edit" className="btn-edit"><GoPencil/></button>
         </td>
         <td data-label="Delete">
-            <button className="btn-trash"><FiTrash/></button>
+            <button title="btn-trash"  className="btn-trash"><FiTrash/></button>
         </td>
     </tr> 
   )
