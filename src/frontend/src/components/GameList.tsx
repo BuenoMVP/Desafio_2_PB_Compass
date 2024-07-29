@@ -1,7 +1,6 @@
 import Game from './Game'
 import './game.css'
 import './gameList.css'
-import '../styles/gameList.css'
 import Menu from './Menu'
 
 const GameList = () => {
