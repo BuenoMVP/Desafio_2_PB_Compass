@@ -9,7 +9,7 @@ interface CardHomeProps {
 
 const CardHome = (props:CardHomeProps) => {
   return (
-    <button>
+    <section id="cardHome">
         <div>
             <>
               {props.icon}
@@ -17,7 +17,7 @@ const CardHome = (props:CardHomeProps) => {
             <p>{props.title}</p>
         </div>
         <span>{props.total}</span>
-    </button>
+    </section>
   )
 }
 

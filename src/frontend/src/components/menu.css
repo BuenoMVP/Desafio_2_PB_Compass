@@ -1,0 +1,84 @@
+.menu-items {
+    width: 90%;
+    height: 60vh;
+    list-style: none;
+}
+
+#sidebar {
+    background-color: #E1F2E1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+    width: 15vw;
+    max-width: 251px;
+    min-width: 61px;
+    padding: 2vh 1vh;
+    position: relative;
+}
+
+#title {
+    display: flex;
+    justify-content: center;
+    gap: 1vh;
+}
+
+#hamburger {
+    display: none;
+}
+
+#logout-button {
+    border-radius: 4px;
+    padding: 0;
+    width: 90%;
+}
+
+#logout-button:hover {
+    background-color: #E97171;
+}
+
+.content {
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+}
+
+.greenBox {
+    background-color: #089B1F;
+    width: 5px;
+}
+
+.item {
+    border-radius: 4px;
+    transition: .4s;
+}
+
+.item:hover{
+    background-color: #089b1e33;
+}
+
+/* Ajustando sidebar com icones */
+
+@media (width < 1674px){
+    #sidebar {
+        transition: .4s;
+        width:4rem;
+    }
+
+    h4 {
+        display: none;
+    }
+    
+    #title {
+        display: none;
+        transition: .4s;
+    }
+
+    #hamburger {
+        display: flex;
+        transition: .4s;
+    }
+}
