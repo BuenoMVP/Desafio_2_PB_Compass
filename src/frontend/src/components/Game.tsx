@@ -1,8 +1,13 @@
 import { GoPencil } from "react-icons/go";
 import { FiTrash } from "react-icons/fi";
-import './game.css'
+import "./game.css"
+import { useState } from "react";
+import FormModal from "./FormModal";
+import DeleteModal from "./DeleteModal";
 
 const Game = () => {
+  const [formModalOpen, setFormModalOpen] = useState(false)
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
   return (
     <tr>
         <td>BA</td>
@@ -12,10 +17,12 @@ const Game = () => {
         <td>Detective</td>
         <td>08-Dec, 2021</td>
         <td>
-            <button className="btn-edit"><GoPencil/></button>
+            <button className="btn-edit" onClick={() => setFormModalOpen(true)}><GoPencil/></button>
+            {formModalOpen && <FormModal/>}
         </td>
         <td data-label="Delete">
-            <button className="btn-trash"><FiTrash/></button>
+            <button className="btn-trash" onClick={() => setDeleteModalOpen(true)}><FiTrash/></button>
+            {deleteModalOpen && <DeleteModal/>}
         </td>
     </tr> 
   )

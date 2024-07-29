@@ -18,7 +18,7 @@
     font-size: 1.5rem;
 }
 
-.tbl-header button{
+.add-new-game-btn{
     font-size: 1.0rem;
     background: #089B1F;
     color: #fff;
@@ -27,7 +27,7 @@
     padding: 1rem 2.5rem;
 }
 
-.tbl-header button:hover{
+.add-new-game-btn:hover{
     background: #07871a;
     cursor: pointer;
 }
