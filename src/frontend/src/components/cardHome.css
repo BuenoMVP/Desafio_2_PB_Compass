@@ -1,4 +1,4 @@
-button {
+#cardHome {
     font-size: 1rem;
     display: flex;
     flex-direction: column;
@@ -8,10 +8,9 @@ button {
     width: 15rem;
     height: 9rem;
     padding: 1rem;
-    cursor: pointer;
 }
 
-button div {
+#cardHome div {
     display: inherit;
     flex-direction: inherit;
     width: 50%;
@@ -19,7 +18,7 @@ button div {
     justify-content: space-between;
 }
 
-button span {
+#cardHome span {
     display: inherit;
     justify-content: end;
     align-items: end;
