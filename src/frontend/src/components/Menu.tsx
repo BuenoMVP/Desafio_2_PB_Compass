@@ -33,7 +33,7 @@ const Menu = (props:MenuProps) => {
                     <MenuButton title='Games' goTo='/GamesList' icon={<IoGameControllerOutline size={tamIcon} />}/>
                 </li>
             </ul>
-            <Link id="logout-button" to="/Login" className="link">
+            <Link id="logout-button" to="/" className="link">
                 <p id="menu-button-text">Logout</p>
                 <MdLogout size={tamIcon}/>
             </Link>
