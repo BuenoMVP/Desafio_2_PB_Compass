@@ -1,0 +1,13 @@
+#home-section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10vh;
+    padding-left: 1rem;
+}
