@@ -1,42 +1,44 @@
-import React from "react"
-import { useState, useEffect, useContext } from "react"
-import { auth } from "../../firebase/firebase"
+import React,{ useContext, useState, useEffect } from "react"
+import { auth } from "../../components/auth/firebase"
 import { onAuthStateChanged } from "firebase/auth"
 
+//Cria o coxtexto
 const AuthContext = React.createContext()
 
+//Custom Hook para usar o contexto
 export function useAuth() {
     return useContext(AuthContext)
 }
 
-export function AuthProvider({ children }){
-    const [actualUser, setActualUser] = useState(null)
+//Componente AuthProvider
+export function AuthProvider({children}){
+    const [currentUser, setCurrentUser] = useState(null)
     const [userLoggedIn, setUserLoggedIn] = useState(false)
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, initializeUser)
         return unsubscribe
-    },[])
+    }, [])
 
     async function initializeUser(user){
-        if(user){
-            setActualUser({...user})
+        if(user) {
+            setCurrentUser({...user})
             setUserLoggedIn(true)
-        } else {
-            setActualUser(null)
+        } else{
+            setCurrentUser(null)
             setUserLoggedIn(false)
         }
-        setLoading(false)
     }
+    setLoading(false)
 
     const value = {
-        actualUser,
+        currentUser,
         userLoggedIn,
-        loading
+        loading,
     }
 
-    return(
+    return (
         <AuthContext.Provider value={value}>
             {!loading && children}
         </AuthContext.Provider>
