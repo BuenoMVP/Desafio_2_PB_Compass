@@ -1,9 +1,3 @@
-#game-list-section {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-}
-
 #game-list-column{
     display: flex;
     flex-direction: column;

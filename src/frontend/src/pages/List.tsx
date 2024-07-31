@@ -1,10 +1,15 @@
 import GameList from '../components/GameList'
+import Menu from '../components/Menu'
+import '../styles/list.css'
 
 const List = () => {
   return (
-    <div>
-      <GameList/>
-    </div>
+    <section id='list-section'>
+      <Menu email='test@email.com' url='GameList'/>
+      <section id="game-list-section">
+        <GameList/>
+      </section>
+    </section>
   )
 }
 

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import Game from './Game'
 import './game.css'
 import './gameList.css'
-import Menu from './Menu'
 import FormModal from './FormModal'
 import SearchBar from './SearchBar'
 
@@ -11,8 +10,6 @@ const GameList = () => {
 
 
   return (
-    <section id='game-list-section'>
-      <Menu email='teste@example.com' url='GameList'/>
       <section id='game-list-column'>
         <SearchBar/>
         <div className="container-game-list">
@@ -40,12 +37,16 @@ const GameList = () => {
                 <Game name='GTA V' description='Ation game thieves' price={4000} category='Survival Horror' date='08-Dec, 2021'/>
                 <Game name='the crew' description='Ation game with parkour' price={350} category='Action' date='08-Dec, 2021'/>
                 <Game name='Batman' description='Ation game with parkour' price={350} category='Action' date='08-Dec, 2021'/>
+                <Game name='Batman' description='Ation game with parkour' price={350} category='Action' date='08-Dec, 2021'/>
+                <Game name='Assassins Creed' description='Ation game with parkour ' price={200} category='Puzzle' date='08-Dec, 2021'/>
+                <Game name='GTA V' description='Ation game thieves' price={4000} category='Survival Horror' date='08-Dec, 2021'/>
+                <Game name='the crew' description='Ation game with parkour' price={350} category='Action' date='08-Dec, 2021'/>
+                <Game name='Batman' description='Ation game with parkour' price={350} category='Action' date='08-Dec, 2021'/>
               </tbody>
             </table>
           </div>
         </div>
       </section>
-    </section>
   )
 }
 
