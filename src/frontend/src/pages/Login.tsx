@@ -1,5 +1,5 @@
 import React, { useState, FormEvent } from 'react'
-import { Navigate, Link } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import { doSignWithEmailAndPassword, doSignInWithGoogle } from '../services/auth';
 import { useAuth } from '../contexts/authContext';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -12,14 +12,16 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState<string>("")
   const [isSigning, setIsSignin] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string>("")
-  const { userLoggedIn } = useAuth()
+  const { userLoggedIn } = useAuth
 
   const handleRegister = async (e: FormEvent) =>{
     e.preventDefault()
     try {
-      await createUserWithEmailAndPassword(auth, email, password)
-    } catch (error) {
       setIsSignin(true)
+      await createUserWithEmailAndPassword(auth, email, password)
+      setIsSignin(false)
+    } catch (error) {
+      setIsSignin(false)
       setErrorMessage("Failed to sign in, verify your credentials")
     }
   }
@@ -28,27 +30,31 @@ const Login: React.FC = () => {
     e.preventDefault()
     if(!isSigning){
       setIsSignin(true)
-      await doSignWithEmailAndPassword(email, password).catch(err =>{
+      try {
+        await doSignWithEmailAndPassword(email, password)
+      } catch (error) {
         setIsSignin(false)
-        setErrorMessage("Failed to sign in, verify your credentials")
-      })
+        setErrorMessage("Whoops, something went wrong, try again")
+      }
     }
   }
 
-  const onGoogleSignIn = (e: FormEvent) => {
+  const onGoogleSignIn = async (e: FormEvent) => {
     e.preventDefault()
     if(!isSigning){
       setIsSignin(true)
-      doSignInWithGoogle().catch(err => {
+      try {
+        await doSignInWithGoogle()
+      } catch (error) {
         setIsSignin(false)
-        setErrorMessage("Failed to sign with Google, try again")
-      })
+        setErrorMessage("Something went wrong with your google authentication")
+      }
     }
   }
 
   return (
     <div className="signInContainer">
-      {userLoggedIn && (<Navigate to={Home}  replace={true}/>)}
+      {userLoggedIn && (<Navigate to='/Home'  replace={true}/>)}
       <h1>CRUD OPERATIONS</h1>
       <form onSubmit={isSigning ? handleRegister : handleSignIn}>
         <h2>{isSigning ? "Register" : "SIGN IN"}</h2>
@@ -75,10 +81,11 @@ const Login: React.FC = () => {
         <p className="signUpP">Sign Up</p>
         <button
         disabled={isSigning}
-        onClick={(e: FormEvent) => { onGoogleSignIn }}
+        onClick={ onGoogleSignIn }
         className="googleButton">
         Sign with Google
         </button>
+        {errorMessage && <p className="error">{errorMessage}</p>}
       </form>
     </div>
       );
