@@ -16,12 +16,15 @@ interface MenuProps {
 }
 
 const Menu = (props:MenuProps) => {
+  const image = props.email.toUpperCase().substring(0,2)
+
   return (
     <aside id='sidebar'>
         <header id='title'>
             <span className="greenBox"></span>
             <h1>CRUD OPERATIONS</h1>
         </header>
+        <p id="user-image">{image}</p>
         <RxHamburgerMenu id="hamburger" size={tamIcon}/>
         <h4>{props.email}</h4>
         <nav className="content">
