@@ -4,6 +4,13 @@
     height: 100vh;
 }
 
+#game-list-column{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
 .container-game-list{
     width: 100%;
     background-color: #F8F8F8;
