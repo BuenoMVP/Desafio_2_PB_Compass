@@ -73,6 +73,12 @@ const Login: React.FC = () => {
         <span>Invalid Password</span>
         <button type="submit" className="signInButton">Sign In</button>
         <p className="signUpP">Sign Up</p>
+        <button
+        disabled={isSigning}
+        onClick={(e: FormEvent) => { onGoogleSignIn }}
+        className="googleButton">
+        Sign with Google
+        </button>
       </form>
     </div>
       );
