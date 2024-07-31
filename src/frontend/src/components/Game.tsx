@@ -21,7 +21,7 @@ const Game = (props:GameProps) => {
 
   return (
     <tr>
-        <td id="image-game"><ImageId text={props.name} size="1vw" fontSize="1.5rem"/></td>
+        <td><ImageId text={props.name} size="inherit" fontSize="1.5rem"/></td>
         <td>{props.name}</td>
         <td>{props.description}</td>
         <td>R$ {props.price}</td>
