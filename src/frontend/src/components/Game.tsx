@@ -4,6 +4,7 @@ import "./game.css"
 import { useState } from "react";
 import FormModal from "./FormModal";
 import DeleteModal from "./DeleteModal";
+import ImageId from "./ImageId";
 
 type Category = "Action" | "Shooter" | "Fighting" | "Puzzle" | "Survival Horror" | "Platform" | "Sports" | "Metroid Vania" | "Adventure" 
 interface GameProps {
@@ -20,7 +21,7 @@ const Game = (props:GameProps) => {
 
   return (
     <tr>
-        <td>BA</td>
+        <td id="image-game"><ImageId text={props.name} size="1vw" fontSize="1.5rem"/></td>
         <td>{props.name}</td>
         <td>{props.description}</td>
         <td>R$ {props.price}</td>

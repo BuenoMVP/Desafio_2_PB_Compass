@@ -4,6 +4,7 @@ import { MdOutlineHome } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
 import MenuButton from './MenuButton'
+import ImageId from "./ImageId";
 import "./menu.css"
 
 const tamIcon = 20
@@ -16,16 +17,16 @@ interface MenuProps {
 }
 
 const Menu = (props:MenuProps) => {
-  const image = props.email.toUpperCase().substring(0,2)
-
   return (
     <aside id='sidebar'>
         <header id='title'>
             <span className="greenBox"></span>
             <h1>CRUD OPERATIONS</h1>
         </header>
-        <p id="user-image">{image}</p>
         <RxHamburgerMenu id="hamburger" size={tamIcon}/>
+        <div id="image-box">
+            <ImageId text={props.email} size="5vw" fontSize="2vw" />
+        </div>
         <h4>{props.email}</h4>
         <nav className="content">
             <ul className="menu-items">
