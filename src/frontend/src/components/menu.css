@@ -16,7 +16,7 @@
     max-width: 251px;
     min-width: 61px;
     padding: 2vh 1vh;
-    position: relative;
+    position: fixed;
 }
 
 #title {
@@ -62,10 +62,14 @@
 
 /* Ajustando sidebar com icones */
 
-@media (width < 1674px){
+@media (width < 1824px){
     #sidebar {
         transition: .4s;
         width:4rem;
+    }
+
+    #image-box {
+        display: none;
     }
 
     h4 {

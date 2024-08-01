@@ -4,24 +4,35 @@ import "./game.css"
 import { useState } from "react";
 import FormModal from "./FormModal";
 import DeleteModal from "./DeleteModal";
+import ImageId from "./ImageId";
 
-const Game = () => {
+type Category = "Action" | "Shooter" | "Fighting" | "Puzzle" | "Survival Horror" | "Platform" | "Sports" | "Metroid Vania" | "Adventure" 
+interface GameProps {
+  name: string,
+  description: string,
+  price: number,
+  category: Category,
+  date: string
+}
+
+const Game = (props:GameProps) => {
   const [formModalOpen, setFormModalOpen] = useState(false)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+
   return (
     <tr>
-        <td>BA</td>
-        <td>Batman Arkham</td>
-        <td>Action game with parkour</td>
-        <td>R$ 350.00</td>
-        <td>Detective</td>
-        <td>08-Dec, 2021</td>
+        <td><ImageId text={props.name} size="inherit" fontSize="1.5rem"/></td>
+        <td>{props.name}</td>
+        <td>{props.description}</td>
+        <td>R$ {props.price}</td>
+        <td>{props.category}</td>
+        <td>{props.date}</td>
         <td>
-            <button className="btn-edit" onClick={() => setFormModalOpen(true)}><GoPencil/></button>
+            <button title="btn-edit" className="btn-edit" onClick={() => setFormModalOpen(true)}><GoPencil/></button>
             {formModalOpen && <FormModal/>}
         </td>
         <td data-label="Delete">
-            <button className="btn-trash" onClick={() => setDeleteModalOpen(true)}><FiTrash/></button>
+            <button title="btn-trash" className="btn-trash" onClick={() => setDeleteModalOpen(true)}><FiTrash/></button>
             {deleteModalOpen && <DeleteModal/>}
         </td>
     </tr> 
