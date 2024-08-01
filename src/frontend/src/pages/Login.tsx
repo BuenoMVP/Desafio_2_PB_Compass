@@ -33,12 +33,10 @@ const Login: React.FC = () => {
         await doSignWithEmailAndPassword(email, password)
       } catch (error) {
         setIsSignin(false)
-        setErrorMessage("Whoops, something went wrong, try again")
+        setErrorMessage("")
       }
     }
   }
-
-
 
   const onGoogleSignIn = async (e: FormEvent) => {
     e.preventDefault()
@@ -48,19 +46,17 @@ const Login: React.FC = () => {
         await doSignInWithGoogle()
       } catch (error) {
         setIsSignin(false)
-        setErrorMessage("Something went wrong with your google authentication")
+        setErrorMessage("")
       }
     }
   }
-
-
 
   return (
     <div className="signInContainer">
       {userLoggedIn && (<Navigate to='/Home'  replace={true}/>)}
       <h1>CRUD OPERATIONS</h1>
       <form onSubmit={isSigning ? handleRegister : handleSignIn}>
-        <h2>{isSigning ? "REGISTER" : "SIGN IN"}</h2>
+        <h2>{isSigning ? "SIGN UP" : "SIGN IN"}</h2>
         <p>{isSigning ? "Create your account" : "Enter your credentials to acess your account"}</p>
         <label htmlFor="email">Email</label>
         <input
@@ -70,18 +66,26 @@ const Login: React.FC = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <span className="text-red-600 font bold">Invalid Emal</span>
+        <span className="text-red-600 font bold">Invalid Email</span>
         <label htmlFor="password">Password</label>
         <input
           type="password"
-          placeholder="Enter your password, at least 6 characters"
+          placeholder="Enter your password"
           className="inputBase"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <span className="text-red-600 font bold">Invalid Password</span>
-        <button type="submit" className="signInButton">Sign In</button>
-        <p className="signUpP">Sign Up</p>
+        <button type="submit" className="signInButton">
+          Sign In
+          </button>
+        <a 
+          className="signUpA" onClick={(e) => {
+            e.preventDefault()
+            setIsSignin(true)
+        }}>
+          Sign Up
+          </a>
         <button
         disabled={isSigning}
         onClick={ onGoogleSignIn }
