@@ -30,6 +30,9 @@
 }
 
 #logout-button {
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
     border-radius: 4px;
     padding: 0;
     width: 90%;
@@ -84,5 +87,9 @@
     #hamburger {
         display: flex;
         transition: .4s;
+    }
+
+    #logout-button p{
+        display: none;
     }
 }
