@@ -1,0 +1,24 @@
+#login-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#103314, #089B1F) ;
+    height: 100vh;
+    width: 100%;
+}
+
+.signInContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 20px;
+    width: 30%;
+    height: 60%;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+}
+
