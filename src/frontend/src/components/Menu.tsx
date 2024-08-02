@@ -2,7 +2,6 @@ import { IoGameControllerOutline } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { MdOutlineHome } from "react-icons/md";
 import { MdLogout } from "react-icons/md";
-import { Link } from "react-router-dom";
 import MenuButton from './MenuButton'
 import ImageId from "./ImageId";
 import "./menu.css"
@@ -37,10 +36,10 @@ const Menu = (props:MenuProps) => {
                     <MenuButton title='Games' goTo='/GamesList' icon={<IoGameControllerOutline size={tamIcon} />}/>
                 </li>
             </ul>
-            <Link id="logout-button" to="/" className="link">
-                <p id="menu-button-text">Logout</p>
+            <button id="logout-button" className="link" onClick={() => window.location.href = "/"}>
+                <p>Logout</p>
                 <MdLogout size={tamIcon}/>
-            </Link>
+            </button>
         </nav>
     </aside>
   )
