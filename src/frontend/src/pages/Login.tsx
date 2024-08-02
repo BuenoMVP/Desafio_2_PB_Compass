@@ -2,6 +2,7 @@ import React, { useState, FormEvent } from "react";
 import { Navigate } from "react-router-dom";
 import { doSignWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../services/auth";
 import { useAuth } from "../contexts/authContext";
+import { FaGoogle } from "react-icons/fa";
 import '../styles/login.css'
 
 const Login: React.FC = () => {
@@ -52,7 +53,8 @@ const Login: React.FC = () => {
     <section id="login-section">
       <div className="signInContainer">
         {userLoggedIn && <Navigate to="/Home" replace={true} />}
-        <h1>CRUD OPERATIONS</h1>
+        <div className="login-header"><h1>CRUD OPERATIONS</h1></div>
+        
         <form id="login-form" onSubmit={isSigning ? handleRegister : handleSignIn}>
           <h2>{isSigning ? "SIGN UP" : "SIGN IN"}</h2>
           <p>
@@ -68,7 +70,7 @@ const Login: React.FC = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="text-red-600 font bold">Invalid Email</span>
+          <span className="error-email">Invalid Email</span>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -77,10 +79,11 @@ const Login: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="text-red-600 font bold">Invalid Password</span>
+          <span className="error-password">Invalid Password</span>
           <button type="submit" className="signInButton">
-            {isSigning ? "Sign Up" : "Sign In"}
+            {isSigning ? "SIGN UP" : "SIGN IN"}
           </button>
+          <div className="switch">
           <a
             className="signUpA"
             onClick={(e) => {
@@ -88,16 +91,18 @@ const Login: React.FC = () => {
               setIsSigning(true);
             }}
           >
-            Sign Up
+            SIGN UP
           </a>
+          </div>
+          <p>OR</p>
           <button
             disabled={isSigning}
             onClick={onGoogleSignIn}
             className="googleButton"
           >
-            Sign with Google
+            <FaGoogle className="google-icon"/> <span>SIGN IN WITH GOOGLE</span>
           </button>
-          {errorMessage && <p className="error">{errorMessage}</p>}
+          {errorMessage && <span className="error">{errorMessage}</span>}
         </form>
       </div>
     </section>
