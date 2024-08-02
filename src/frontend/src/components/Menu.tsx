@@ -5,6 +5,7 @@ import { MdLogout } from "react-icons/md";
 import MenuButton from './MenuButton'
 import ImageId from "./ImageId";
 import "./menu.css"
+import { doSignOut } from "../services/auth";
 
 const tamIcon = 20
 
@@ -36,7 +37,7 @@ const Menu = (props:MenuProps) => {
                     <MenuButton title='Games' goTo='/GamesList' icon={<IoGameControllerOutline size={tamIcon} />}/>
                 </li>
             </ul>
-            <button id="logout-button" className="link" onClick={() => window.location.href = "/"}>
+            <button id="logout-button" className="link" onClick={() => { doSignOut().then(() => window.location.href = '/') }}>
                 <p>Logout</p>
                 <MdLogout size={tamIcon}/>
             </button>
