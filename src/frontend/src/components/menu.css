@@ -65,7 +65,24 @@
 
 /* Ajustando sidebar com icones */
 
-@media (width < 1824px){
+@media (width < 1824px) and (width > 1240px){
+    #sidebar {
+        transition: .4s;
+        width:13vw;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+    
+    #title {
+        font-size: 12px;
+        transition: .4s;
+    }
+
+}
+
+@media (width <= 1240px){
     #sidebar {
         transition: .4s;
         width:4rem;
