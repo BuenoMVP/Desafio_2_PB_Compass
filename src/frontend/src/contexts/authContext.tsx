@@ -2,7 +2,6 @@ import React,{ useContext, useState, useEffect, Context, ReactElement } from "re
 import { auth } from "../services/firebase"
 import { onAuthStateChanged, User } from "firebase/auth"
 
-//Cria o coxtexto
 interface AuthContextType {
     currentUser: User | null;
     userLoggedIn: boolean;
@@ -11,16 +10,18 @@ interface AuthContextType {
 
 const AuthContext: Context<AuthContextType | undefined> =React.createContext<AuthContextType | undefined>(undefined)
 
-//Custom Hook para usar o contexto
 export function useAuth() {
-    return useContext(AuthContext)
+    const context = useContext(AuthContext)
+    if (context === undefined){
+        throw new Error("Error with the use of AuthContext, check the code")
+    }
+    return context
 }
 
 interface AuthProviderProps{
     children: ReactElement | ReactElement[]
 }
 
-//Componente AuthProvider
 export function AuthProvider({ children }: AuthProviderProps){
     const [currentUser, setCurrentUser] = useState<User | null>(null)
     const [userLoggedIn, setUserLoggedIn] = useState<boolean>(false)
@@ -41,8 +42,8 @@ export function AuthProvider({ children }: AuthProviderProps){
             setCurrentUser(null)
             setUserLoggedIn(false)
         }
+        setLoading(false)
     }
-    setLoading(false)
 
     const value: AuthContextType = {
         currentUser,

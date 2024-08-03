@@ -8,7 +8,12 @@ import SearchBar from "../components/SearchBar"
 import api from "../services/api"
 
 const tamIcon = 100
+<<<<<<< HEAD
 const total = 100
+=======
+const totalValue = 150
+const user = "test@gmail.com"
+>>>>>>> 8b33349bb39b8804e018aa136f88f96d03ceb9a4
 
 const Home = () => {
   const [totalGames, setTotalGames] = useState(0)
@@ -30,7 +35,7 @@ const Home = () => {
 
   return (
     <section id="home-section">
-      <Menu email="test@email.com" url="Home"/>
+      <Menu email={user} url="Home"/>
       <section id="home-section-column">
         <SearchBar/>
         <div className="cardContainer">

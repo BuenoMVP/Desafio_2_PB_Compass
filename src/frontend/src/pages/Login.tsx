@@ -1,26 +1,24 @@
 import React, { useState, FormEvent } from "react";
 import { Navigate } from "react-router-dom";
-import { doSignWithEmailAndPassword, doSignInWithGoogle } from "../services/auth";
+import { doSignWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../services/auth";
 import { useAuth } from "../contexts/authContext";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../services/firebase";
+import { FaGoogle } from "react-icons/fa";
 import '../styles/login.css'
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [isSigning, setIsSignin] = useState<boolean>(false);
+  const [isSigning, setIsSigning] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const userLoggedIn = useAuth()!;
+  const { userLoggedIn } = useAuth();
 
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
+    setIsSigning(true);
     try {
-      setIsSignin(true);
-      await createUserWithEmailAndPassword(auth, email, password);
-      setIsSignin(false);
+      await doCreateUserWithEmailAndPassword(email, password);
     } catch (error) {
-      setIsSignin(false);
+      setIsSigning(false);
       setErrorMessage("Failed to sign in, verify your credentials");
     }
   };
@@ -28,11 +26,11 @@ const Login: React.FC = () => {
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     if (!isSigning) {
-      setIsSignin(true);
+      setIsSigning(true);
       try {
         await doSignWithEmailAndPassword(email, password);
       } catch (error) {
-        setIsSignin(false);
+        setIsSigning(false);
         setErrorMessage("");
       }
     }
@@ -41,11 +39,11 @@ const Login: React.FC = () => {
   const onGoogleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     if (!isSigning) {
-      setIsSignin(true);
+      setIsSigning(true);
       try {
         await doSignInWithGoogle();
       } catch (error) {
-        setIsSignin(false);
+        setIsSigning(false);
         setErrorMessage("");
       }
     }
@@ -55,7 +53,8 @@ const Login: React.FC = () => {
     <section id="login-section">
       <div className="signInContainer">
         {userLoggedIn && <Navigate to="/Home" replace={true} />}
-        <h1>CRUD OPERATIONS</h1>
+        <div className="login-header"><h1>CRUD OPERATIONS</h1></div>
+        
         <form id="login-form" onSubmit={isSigning ? handleRegister : handleSignIn}>
           <h2>{isSigning ? "SIGN UP" : "SIGN IN"}</h2>
           <p>
@@ -71,7 +70,7 @@ const Login: React.FC = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="text-red-600 font bold">Invalid Email</span>
+          <span className="error-email">Invalid Email</span>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -80,27 +79,30 @@ const Login: React.FC = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="text-red-600 font bold">Invalid Password</span>
-          <button type="submit" className="signInButton" onClick={() => window.location.href = "/Home"}>
-            Sign In
+          <span className="error-password">Invalid Password</span>
+          <button type="submit" className="signInButton">
+            {isSigning ? "SIGN UP" : "SIGN IN"}
           </button>
+          <div className="switch">
           <a
             className="signUpA"
             onClick={(e) => {
               e.preventDefault();
-              setIsSignin(true);
+              setIsSigning(true);
             }}
           >
-            Sign Up
+            SIGN UP
           </a>
+          </div>
+          <p>OR</p>
           <button
             disabled={isSigning}
             onClick={onGoogleSignIn}
             className="googleButton"
           >
-            Sign with Google
+            <FaGoogle className="google-icon"/> <span>SIGN IN WITH GOOGLE</span>
           </button>
-          {errorMessage && <p className="error">{errorMessage}</p>}
+          {errorMessage && <span className="error">{errorMessage}</span>}
         </form>
       </div>
     </section>
