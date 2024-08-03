@@ -3,8 +3,13 @@ const connectDB = require('../config/db');
 const testRoute = require('../src/routes/test');
 const loginRoute = require('../src/routes/loginRoute');
 const gameRoute = require('../src/routes/gameListRoute');
+const cors = require('cors')
 
 const app = express()
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}))
 
 connectDB()
 

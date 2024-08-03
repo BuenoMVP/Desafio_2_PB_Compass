@@ -2,10 +2,12 @@ import GameList from '../components/GameList'
 import Menu from '../components/Menu'
 import '../styles/list.css'
 
+const user = "test@gmail.com"
+
 const List = () => {
   return (
     <section id='list-section'>
-      <Menu email='test@email.com' url='GameList'/>
+      <Menu email={user} url='games'/>
       <section id="game-list-section">
         <GameList/>
       </section>

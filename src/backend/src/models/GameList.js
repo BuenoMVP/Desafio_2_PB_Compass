@@ -21,6 +21,11 @@ const gamesListSchema = new mongoose.Schema({
         type: Date, 
         default: Date.now 
     },
+    loginId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Login',
+        required: true
+    },
 })
 
 module.exports = mongoose.model('GamesList', gamesListSchema)
