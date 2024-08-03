@@ -140,3 +140,9 @@
     display: flex;
     flex-direction: column;
 }
+
+@media (width < 490px) {
+    .signInContainer {
+        width: 90%;
+    }
+}
