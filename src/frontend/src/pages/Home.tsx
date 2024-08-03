@@ -7,11 +7,12 @@ import SearchBar from "../components/SearchBar";
 
 const tamIcon = 100
 const totalValue = 150
+const user = "test@gmail.com"
 
 const Home = () => {
   return (
     <section id="home-section">
-      <Menu email="test@email.com" url="Home"/>
+      <Menu email={user} url="Home"/>
       <section id="home-section-column">
         <SearchBar/>
         <div className="cardContainer">
