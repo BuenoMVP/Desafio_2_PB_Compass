@@ -1,15 +1,15 @@
-import { IoGameControllerOutline } from "react-icons/io5";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { MdOutlineHome } from "react-icons/md";
-import { MdLogout } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { IoGameControllerOutline } from "react-icons/io5"
+import { RxHamburgerMenu } from "react-icons/rx"
+import { MdOutlineHome } from "react-icons/md"
+import { MdLogout } from "react-icons/md"
+import { Link } from "react-router-dom"
 import MenuButton from './MenuButton'
-import ImageId from "./ImageId";
+import ImageId from "./ImageId"
 import "./menu.css"
 
 const tamIcon = 20
 
-type URL = "Home" | "GameList"
+type URL = "Home" | "games"
 
 interface MenuProps {
     email: string,
@@ -31,10 +31,10 @@ const Menu = (props:MenuProps) => {
         <nav className="content">
             <ul className="menu-items">
                 <li className="item" style={{backgroundColor: props.url === "Home" ? "#089B1F" : ""}}>
-                    <MenuButton title='Home' goTo='/Home' icon={<MdOutlineHome size={tamIcon} />}/>
+                    <MenuButton title='Home' goTo='/home' icon={<MdOutlineHome size={tamIcon} />}/>
                 </li>
-                <li className="item" style={{backgroundColor: props.url === "GameList" ? "#089B1F" : ""}}>
-                    <MenuButton title='Games' goTo='/GamesList' icon={<IoGameControllerOutline size={tamIcon} />}/>
+                <li className="item" style={{backgroundColor: props.url === "games" ? "#089B1F" : ""}}>
+                    <MenuButton title='Games' goTo='/games' icon={<IoGameControllerOutline size={tamIcon} />}/>
                 </li>
             </ul>
             <Link id="logout-button" to="/" className="link">

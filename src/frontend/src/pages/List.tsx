@@ -5,7 +5,7 @@ import '../styles/list.css'
 const List = () => {
   return (
     <section id='list-section'>
-      <Menu email='test@email.com' url='GameList'/>
+      <Menu email='test@email.com' url='games'/>
       <section id="game-list-section">
         <GameList/>
       </section>
