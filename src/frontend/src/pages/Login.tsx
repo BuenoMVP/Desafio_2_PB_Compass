@@ -1,53 +1,107 @@
-import React, { useState, FormEvent } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useState, FormEvent } from "react"
+import { Navigate } from "react-router-dom"
 import { doSignWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../services/auth";
-import { useAuth } from "../contexts/authContext";
-import { FaGoogle } from "react-icons/fa";
+import { useAuth } from "../contexts/authContext"
+import { FirebaseError } from "firebase/app"
+import { FaGoogle } from "react-icons/fa"
 import '../styles/login.css'
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isSigning, setIsSigning] = useState<boolean>(false);
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [isSigning, setIsSigning] = useState<boolean>(false)
+  const [emailError, setEmailError] = useState<string>("")
+  const [passwordError, setPasswordError] = useState<string>("")
+  const [googleError, setGoogleError] = useState<string>("")
   const { userLoggedIn } = useAuth();
 
   const handleRegister = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSigning(true);
+    e.preventDefault()
+    setIsSigning(true)
+    setEmailError("")
+    setPasswordError("")
     try {
-      await doCreateUserWithEmailAndPassword(email, password);
+      await doCreateUserWithEmailAndPassword(email, password)
     } catch (error) {
-      setIsSigning(false);
-      setErrorMessage("Failed to sign in, verify your credentials");
+      setIsSigning(false)
+      handleErrors(error as FirebaseError)
     }
   };
 
   const handleSignIn = async (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!isSigning) {
-      setIsSigning(true);
+      setIsSigning(true)
+      setEmailError("")
+      setPasswordError("")
       try {
-        await doSignWithEmailAndPassword(email, password);
+        await doSignWithEmailAndPassword(email, password)
       } catch (error) {
-        setIsSigning(false);
-        setErrorMessage("");
+        setIsSigning(false)
+        handleErrors(error as FirebaseError)
       }
     }
   };
 
   const onGoogleSignIn = async (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!isSigning) {
-      setIsSigning(true);
+      setIsSigning(true)
+      setGoogleError("")
       try {
-        await doSignInWithGoogle();
+        await doSignInWithGoogle()
       } catch (error) {
-        setIsSigning(false);
-        setErrorMessage("");
+        setIsSigning(false)
+        handleErrors(error as FirebaseError)
       }
     }
   };
+
+  const handleErrors = (error: FirebaseError) => {
+
+      const errorCode = error.code
+
+      switch (errorCode) {
+        case "auth/invalid-email":
+          setEmailError("Invalid email format.")
+          break
+        case "auth/email-already-in-use":
+          setEmailError("Email already exists.")
+          break
+        case "auth/user-disabled":
+          setEmailError("User account is disabled.")
+          break
+        case "auth/user-not-found":
+          setEmailError("This email isnt registered.")
+          break
+        case "auth/weak-password":
+          setPasswordError("Password should be at least 6 characters.")
+          break
+        case "auth/wrong-password":
+          setPasswordError("Incorrect password.")
+          break
+        case "auth/pop-up-closed-by-user":
+          setGoogleError("Popup was closed before authentication completed.")
+          break
+        case "auth/account-exists-with-different-credential":
+          setGoogleError("An account already exists with the same e-mail.")
+          break
+        default:
+          setEmailError("Our servers don't know the error, try again")
+          setPasswordError("Our servers don't know the error, try again")
+          setGoogleError("Our servers don't know the error, try again")
+          break
+      }
+  }
+
+  const signMode = () => {
+    setIsSigning(!isSigning)
+    setEmail("")
+    setPassword("")
+    setEmailError("")
+    setPasswordError("")
+    setGoogleError("")
+  }
 
   return (
     <section id="login-section">
@@ -66,20 +120,20 @@ const Login: React.FC = () => {
           <input
             type="email"
             placeholder="Enter your email"
-            className="inputBase"
+            className={`inputBase ${emailError ? "inputError" : ""}`}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <span className="error-email">Invalid Email</span>
+          {emailError && <span className="errors">{emailError}</span>}
           <label htmlFor="password">Password</label>
           <input
             type="password"
             placeholder="Enter your password"
-            className="inputBase"
+            className={`inputBase ${passwordError ? "inputError" : ""}`}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span className="error-password">Invalid Password</span>
+          {passwordError && <span className="errors">{passwordError}</span>}
           <button type="submit" className="signInButton">
             {isSigning ? "SIGN UP" : "SIGN IN"}
           </button>
@@ -87,11 +141,11 @@ const Login: React.FC = () => {
           <a
             className="signUpA"
             onClick={(e) => {
-              e.preventDefault();
-              setIsSigning(true);
+              e.preventDefault()
+              signMode()
             }}
           >
-            SIGN UP
+            {isSigning ? "SIGN IN" : "SIGN UP"}
           </a>
           </div>
           <p>OR</p>
@@ -102,7 +156,7 @@ const Login: React.FC = () => {
           >
             <FaGoogle className="google-icon"/> <span>SIGN IN WITH GOOGLE</span>
           </button>
-          {errorMessage && <span className="error">{errorMessage}</span>}
+          {googleError && <span className="errors">{googleError}</span>}
         </form>
       </div>
     </section>
