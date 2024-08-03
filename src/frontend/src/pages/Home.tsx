@@ -34,8 +34,8 @@ const Home = () => {
       <section id="home-section-column">
         <SearchBar/>
         <div className="cardContainer">
-          <CardHome title="Jogos" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED"/>} link="/games"/>
-          <CardHome title="Genero" total={total} icon={<GoTag size={tamIcon} color="#EE95C5"/>} link=""/>
+          <CardHome title="Jogos" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED"/>} />
+          <CardHome title="Genero" total={total} icon={<GoTag size={tamIcon} color="#EE95C5"/>} />
         </div>
       </section>
     </section>

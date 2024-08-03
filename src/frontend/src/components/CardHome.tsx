@@ -1,27 +1,23 @@
 import { IconBaseProps } from "react-icons"
 import "./cardHome.css"
-import { Link } from "react-router-dom"
 
 interface CardHomeProps {
   title: string
   total: number
   icon: IconBaseProps
-  link: string
 }
 
-const CardHome: React.FC<CardHomeProps> = ({ title, total, icon, link }) => {
+const CardHome = (props:CardHomeProps) => {
   return (
-    <Link to={link}> 
       <section id="cardHome">
           <div>
               <>
-                {icon}
+                {props.icon}
               </>
-              <p>{title}</p>
+              <p>{props.title}</p>
           </div>
-          <span>{total}</span>
+          <span>{props.total}</span>
       </section>
-    </Link>
   )
 }
 
