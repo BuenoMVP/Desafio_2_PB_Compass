@@ -7,11 +7,12 @@ interface CardHomeProps {
   total: number
   icon: IconBaseProps
   link: string
+  color: string
 }
 
 const CardHome = (props:CardHomeProps) => {
   return (
-      <Link to={props.link} id="cardHome">
+      <Link to={props.link} id="cardHome" style={{ backgroundColor: props.color+"27"}}>
           <div>
               <>
                 {props.icon}
