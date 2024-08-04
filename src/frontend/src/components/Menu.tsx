@@ -19,6 +19,13 @@ interface MenuProps {
 
 const Menu = (props: MenuProps) => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
+  
+  let emailUser = props.email
+
+  if (emailUser.length > 22){
+    const aux = emailUser.indexOf("@") + 1
+    emailUser = emailUser.slice(0,aux) + "..."
+  }
 
   return (
     <aside id='sidebar' style={{ width: openMenu ? "14rem" : "" }}>
@@ -30,7 +37,7 @@ const Menu = (props: MenuProps) => {
       <div id="image-box" style={{ display: openMenu ? "flex" : "" }}>
         <ImageId text={props.email} size="10vh" fontSize="4vh" />
       </div>
-      <h4 style={{ display: openMenu ? "flex" : "" }}>{props.email}</h4>
+      <h4 style={{ display: openMenu ? "flex" : "" }}>{emailUser}</h4>
       <nav className="content">
         <ul className="menu-items">
           <li className="item" style={{ backgroundColor: props.url === "Home" ? "#089B1F" : "" }}>
