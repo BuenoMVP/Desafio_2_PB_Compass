@@ -1,15 +1,17 @@
 import { IconBaseProps } from "react-icons"
 import "./cardHome.css"
+import { Link } from "react-router-dom"
 
 interface CardHomeProps {
   title: string
   total: number
   icon: IconBaseProps
+  link: string
 }
 
 const CardHome = (props:CardHomeProps) => {
   return (
-      <section id="cardHome">
+      <Link to={props.link} id="cardHome">
           <div>
               <>
                 {props.icon}
@@ -17,7 +19,7 @@ const CardHome = (props:CardHomeProps) => {
               <p>{props.title}</p>
           </div>
           <span>{props.total}</span>
-      </section>
+      </Link>
   )
 }
 

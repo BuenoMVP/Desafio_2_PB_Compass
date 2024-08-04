@@ -9,7 +9,7 @@ import api from "../services/api"
 import { useAuth } from "../contexts/authContext"
 
 const tamIcon = 100
-const total = 150
+const total = 9
 
 const Home = () => {
   const [totalGames, setTotalGames] = useState(0)
@@ -36,8 +36,8 @@ const Home = () => {
       <section id="home-section-column">
         <SearchBar />
         <div className="cardContainer">
-          <CardHome title="Jogos" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED" />} />
-          <CardHome title="Genero" total={total} icon={<GoTag size={tamIcon} color="#EE95C5" />} />
+          <CardHome title="Games" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED" />} link="/games" />
+          <CardHome title="Genre" total={total} icon={<GoTag size={tamIcon} color="#EE95C5"/>} link="/games"/>
         </div>
       </section>
     </section>
