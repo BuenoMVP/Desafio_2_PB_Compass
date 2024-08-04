@@ -17,12 +17,18 @@
     min-width: 61px;
     padding: 2vh 1vh;
     position: fixed;
+    z-index: 2;
 }
 
 #title {
     display: flex;
     justify-content: center;
+    font-size: 15px;
     gap: 1vh;
+}
+
+header {
+    width: 100%;
 }
 
 #hamburger {
@@ -30,6 +36,9 @@
 }
 
 #logout-button {
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
     border-radius: 4px;
     padding: 0;
     width: 90%;
@@ -60,9 +69,24 @@
     background-color: #089b1e33;
 }
 
-/* Ajustando sidebar com icones */
+@media (width < 1824px) and (width > 1240px){
+    #sidebar {
+        transition: .4s;
+        width:13vw;
+    }
 
-@media (width < 1824px){
+    h4 {
+        font-size: 15px;
+    }
+    
+    #title {
+        font-size: 12px;
+        transition: .4s;
+    }
+
+}
+
+@media (width <= 1240px){
     #sidebar {
         transition: .4s;
         width:4rem;
@@ -78,11 +102,18 @@
     
     #title {
         display: none;
+        font-size: 13px;
         transition: .4s;
     }
 
     #hamburger {
         display: flex;
+        padding-left: 1.1rem;
+        cursor: pointer;
         transition: .4s;
+    }
+
+    #logout-button p{
+        display: none;
     }
 }

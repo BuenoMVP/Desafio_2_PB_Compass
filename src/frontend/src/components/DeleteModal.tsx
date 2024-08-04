@@ -1,21 +1,25 @@
-import "./DeleteModal.css"
+import "./DeleteModal.css";
 
-const DeleteModal = () => {
-  return (
-    <div className="delete-modal-container">
-        <div className="delete-modal">
-            <div className="delete-group">
-                <form>
-                    <h2>Delete confirmation</h2>
-                    <p>Are you sure you want to delete Batman Arkham?</p>
-                    <button className="delete-btn" type="submit">Delete</button>
-                    <button className="cancel-btn">Cancel</button>
-                </form> 
-            </div>
-        </div>
-
-    </div>
-  )
+interface DeleteModalProps {
+  onDelete: () => void;
+  onClose: () => void;
 }
 
-export default DeleteModal
+const DeleteModal: React.FC<DeleteModalProps> = ({ onDelete, onClose }) => {
+  return (
+    <div className="delete-modal-container">
+      <div className="delete-modal">
+        <div className="delete-group">
+          <form>
+            <h2>Delete confirmation</h2>
+            <p>Are you sure you want to delete this game?</p>
+            <button type="button" className="delete-btn" onClick={onDelete}>Delete</button>
+            <button type="button" className="cancel-btn" onClick={onClose}>Cancel</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DeleteModal;

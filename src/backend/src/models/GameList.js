@@ -22,8 +22,7 @@ const gamesListSchema = new mongoose.Schema({
         default: Date.now 
     },
     loginId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Login',
+        type: String,
         required: true
     },
 })

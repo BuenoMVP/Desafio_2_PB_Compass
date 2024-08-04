@@ -7,9 +7,21 @@
 
 .container-game-list{
     width: 100%;
+    height: 100%;
     background-color: #F8F8F8;
-    padding: 2rem 1rem;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 1.9rem 1rem;
     font-family: 'Montserrat';
+}
+
+.container-game-list::-webkit-scrollbar{
+    background-color: #dfdfdf;
+}
+
+.container-game-list::-webkit-scrollbar-thumb{
+    border-radius: 4px;
+    background-color: #089B1F;
 }
 
 .tbl-header{

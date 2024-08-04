@@ -5,6 +5,7 @@ import "./menuButton.css"
 interface MenuButtonProps {
     title: string,
     goTo: string,
+    state: boolean,
     icon: IconBaseProps
 }
 
@@ -14,7 +15,7 @@ const MenuButton = (props:MenuButtonProps) => {
         <>
             {props.icon}
         </>
-        <p id="menu-button-text">{props.title}</p>
+        <p id="menu-button-text" style={{display: props.state === false ? "" : "flex"}}>{props.title}</p>
     </Link>
   )
 }
