@@ -12,6 +12,10 @@
     transition: .4s;
 }
 
+.link:hover {
+    color: #000;
+}
+
 @media (width < 1240px){
     #menu-button-text {
         display: none;
