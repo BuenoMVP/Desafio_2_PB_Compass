@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const verifyToken = require('../middlewares/authMiddleware')
 const { createGame, getAllGames, updateGame, deleteGame, countGamesByUser } = require('../controllers/gameListController')
 
-router.post('/', createGame)
-router.get('/', getAllGames)
-router.put('/:id', updateGame)
-router.delete('/:id', deleteGame)
-router.get('/count', countGamesByUser)
+router.post('/', verifyToken, createGame)
+router.get('/', verifyToken, getAllGames)
+router.put('/:id', verifyToken, updateGame)
+router.delete('/:id', verifyToken, deleteGame)
+router.get('/count', verifyToken, countGamesByUser)
 
 module.exports = router

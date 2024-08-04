@@ -1,27 +1,28 @@
-import { useState, useEffect } from 'react'
-import api from '../services/api'
-import "./FormModal.css"
-
+import { useState, useEffect } from 'react';
+import api from '../services/api';
+import './FormModal.css';
+import { useAuth } from '../contexts/authContext';
 
 interface FormModalProps {
-  onClose: () => void
-  fetchGames: () => void
+  onClose: () => void;
+  fetchGames: () => void;
   gameData?: {
-    id: string
-    name: string
-    description: string
-    price: number
-    category: string
-    date: string
-  }
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    category: string;
+    date: string;
+  };
 }
 
 const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('Action')
   const [date, /* setDate */] = useState('')
+  const { currentUser } = useAuth()
 
   useEffect(() => {
     if (gameData) {
@@ -36,7 +37,12 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const loginId = "66a2a6ef730d7fe835417ca3"
+    if (!currentUser) {
+      console.error('No user is logged in.')
+      return
+    }
+
+    const loginId = currentUser.uid; // Getting the loginId from currentUser
     const game = { name, description, price: Number(price), category, date, loginId }
 
     try {
@@ -45,12 +51,12 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
       } else {
         await api.post('/games', game)
       }
-      fetchGames(); 
-      onClose(); 
+      fetchGames()
+      onClose()
     } catch (error) {
       console.error('Erro ao salvar jogo', error)
     }
-  };
+  }
 
   return (
     <div className="form-modal-container">
@@ -91,7 +97,7 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default FormModal;
+export default FormModal

@@ -5,6 +5,7 @@ import './game.css'
 import './gameList.css'
 import FormModal from './FormModal'
 import SearchBar from './SearchBar'
+import { useAuth } from '../contexts/authContext'
 
 type Category = 'Action' | 'Shooter' | 'Fighting' | 'Puzzle' | 'Survival Horror' | 'Platform' | 'Sports' | 'Metroidvania' | 'Adventure'
 
@@ -18,25 +19,24 @@ interface Game {
 }
 
 const GameList = () => {
-  const [formModalOpen, setFormModalOpen] = useState(false)
+  const [formModalOpen, setFormModalOpen] = useState(false);
   const [games, setGames] = useState<Game[]>([])
+  const { currentUser } = useAuth()
 
   const fetchGames = async () => {
-    const loginId = "66a2a6ef730d7fe835417ca3" 
-
+    if (!currentUser) return
     try {
-      const response = await api.get<Game[]>(`/games?loginId=${loginId}`)
-      console.log(response.data)
+      const response = await api.get<Game[]>(`/games?loginId=${currentUser.uid}`)
       setGames(Array.isArray(response.data) ? response.data : [])
     } catch (error) {
       console.error('Erro ao buscar jogos', error)
       setGames([])
     }
-  }
+  };
 
   useEffect(() => {
     fetchGames()
-  }, [])
+  }, [currentUser])
 
   return (
     <section id='game-list-column'>
@@ -62,7 +62,7 @@ const GameList = () => {
             </thead>
             <tbody>
               {games.map((game) => (
-                <Game 
+                <Game
                   key={game._id}
                   id={game._id}
                   name={game.name}
@@ -78,7 +78,7 @@ const GameList = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
 export default GameList

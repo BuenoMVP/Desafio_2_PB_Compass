@@ -24,16 +24,14 @@ const Game: React.FC<GameProps> = (props) => {
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
 
   const handleDelete = async () => {
-    const loginId = "66a2a6ef730d7fe835417ca3"
-
     try {
-      await api.delete(`/games/${props.id}`, { data: { loginId } })
+      await api.delete(`/games/${props.id}`)
       props.fetchGames()
       setDeleteModalOpen(false)
     } catch (error) {
       console.error('Erro ao excluir jogo', error)
     }
-  };
+  }
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString)
@@ -41,28 +39,28 @@ const Game: React.FC<GameProps> = (props) => {
     const month = date.toLocaleString('default', { month: 'short' })
     const year = date.getFullYear()
     return `${day}-${month}, ${year}`
-  };
+  }
 
   const formattedDate = formatDate(props.date)
 
   return (
     <tr>
-      <td><ImageId text={props.name} size="inherit" fontSize="1.5rem"/></td>
+      <td><ImageId text={props.name} size="inherit" fontSize="1.5rem" /></td>
       <td>{props.name}</td>
       <td>{props.description}</td>
       <td>R$ {props.price}</td>
       <td>{props.category}</td>
       <td>{formattedDate}</td>
       <td>
-        <button title="btn-edit" className="btn-edit" onClick={() => setFormModalOpen(true)}><GoPencil/></button>
+        <button title="btn-edit" className="btn-edit" onClick={() => setFormModalOpen(true)}><GoPencil /></button>
         {formModalOpen && <FormModal onClose={() => setFormModalOpen(false)} fetchGames={props.fetchGames} gameData={props} />}
       </td>
       <td data-label="Delete">
-        <button title="btn-trash" className="btn-trash" onClick={() => setDeleteModalOpen(true)}><FiTrash/></button>
+        <button title="btn-trash" className="btn-trash" onClick={() => setDeleteModalOpen(true)}><FiTrash /></button>
         {deleteModalOpen && <DeleteModal onDelete={handleDelete} onClose={() => setDeleteModalOpen(false)} />}
       </td>
     </tr>
-  );
-};
+  )
+}
 
-export default Game;
+export default Game
