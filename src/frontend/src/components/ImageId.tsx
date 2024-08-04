@@ -6,8 +6,8 @@ interface ImageProps {
     fontSize: string
 }
 
-const ImageId = (props:ImageProps) => {
-  const image = props.text.toUpperCase().substring(0,2)
+const ImageId: React.FC<ImageProps> = (props) => {
+  const image = typeof props.text === 'string' ? props.text.toUpperCase().substring(0, 2) : ''
 
   return (
     <p id="user-image" style={{width: props.size, height: props.size, fontSize: props.fontSize}}>{image}</p>
