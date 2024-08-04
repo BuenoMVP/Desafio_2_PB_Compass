@@ -132,7 +132,7 @@ const Login: React.FC = () => {
               {isSigning ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
             </a>
           </div>
-          <p>OR</p>
+          <p style={isSigning ? { display: "none" } : {}}>OR</p>
           <button
             disabled={isSigning}
             onClick={onGoogleSignIn}

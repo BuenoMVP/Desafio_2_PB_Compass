@@ -126,6 +126,10 @@
     background-color: #3d78d7;
 }
 
+.googleButton:disabled{
+    display: none;
+}
+
 .googleButton span{
     padding-left: 1rem;
 }
