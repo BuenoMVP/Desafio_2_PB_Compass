@@ -1,6 +1,6 @@
 .form-modal-container{
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -65,4 +65,28 @@
 .form-group label{
     margin-bottom: 0.2rem;
     text-align: left;
+}
+
+@media (width < 420px) {
+    .form-modal{
+        width: 90%;
+    }
+
+    .form-submit-btn {
+        height: 10vh;
+    }
+
+    .form-cancel-btn {
+        height: 10vh;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select{
+        border: 1px solid black;
+        border-radius: 0.3rem;
+        padding: 0.3rem;
+        font-size: 1rem;
+        height: 7vh;
+    }
 }

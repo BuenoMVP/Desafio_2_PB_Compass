@@ -1,6 +1,6 @@
 .delete-modal-container{
     position: fixed;
-    z-index: 1;
+    z-index: 3;
     left: 0;
     top: 0;
     width: 100%;
@@ -64,4 +64,17 @@
 .delete-group h2{
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
+}
+
+@media (width < 420px) {
+    .delete-modal{
+        width: 90%;
+    }
+
+    .delete-btn {
+        height: 10vh;
+    }
+    .cancel-btn {
+        height: 10vh;
+    }
 }
