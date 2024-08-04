@@ -64,11 +64,11 @@
     font-size: 0.8rem;
 }
 
-.error-email,.error-password,.error{
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    display: none;
+.errors{
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     color: #cd4949;
+    font-size: 0.9rem;
 }
 
 .error{
