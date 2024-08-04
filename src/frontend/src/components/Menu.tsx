@@ -29,11 +29,15 @@ const Menu = (props: MenuProps) => {
 
   return (
     <aside id='sidebar' style={{ width: openMenu ? "14rem" : "" }}>
-      <header id='title'>
-        <span className="greenBox"></span>
-        <h1>CRUD OPERATIONS</h1>
+      <header>
+        <div id="hamburger">
+          <RxHamburgerMenu size={tamIcon} onClick={() => setOpenMenu(!openMenu)} />
+        </div>
+        <div id="title">
+          <span className="greenBox"></span>
+          <h1>CRUD OPERATIONS</h1>
+        </div>
       </header>
-      <RxHamburgerMenu id="hamburger" size={tamIcon} onClick={() => setOpenMenu(!openMenu)} />
       <div id="image-box" style={{ display: openMenu ? "flex" : "" }}>
         <ImageId text={props.email} size="10vh" fontSize="4vh" />
       </div>

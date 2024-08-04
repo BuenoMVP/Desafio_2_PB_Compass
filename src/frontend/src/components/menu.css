@@ -27,6 +27,10 @@
     gap: 1vh;
 }
 
+header {
+    width: 100%;
+}
+
 #hamburger {
     display: none;
 }
@@ -65,8 +69,6 @@
     background-color: #089b1e33;
 }
 
-/* Ajustando sidebar com icones */
-
 @media (width < 1824px) and (width > 1240px){
     #sidebar {
         transition: .4s;
@@ -100,11 +102,13 @@
     
     #title {
         display: none;
+        font-size: 13px;
         transition: .4s;
     }
 
     #hamburger {
         display: flex;
+        padding-left: 1.1rem;
         cursor: pointer;
         transition: .4s;
     }

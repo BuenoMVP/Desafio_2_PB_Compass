@@ -8,7 +8,7 @@ import SearchBar from "../components/SearchBar"
 import api from "../services/api"
 import { useAuth } from "../contexts/authContext"
 
-const tamIcon = 100
+const tamIcon = 50
 const total = 9
 
 const Home = () => {
@@ -36,8 +36,8 @@ const Home = () => {
       <section id="home-section-column">
         <SearchBar />
         <div className="cardContainer">
-          <CardHome title="Games" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED" />} link="/games" />
-          <CardHome title="Genre" total={total} icon={<GoTag size={tamIcon} color="#EE95C5"/>} link="/games"/>
+          <CardHome title="Games" total={totalGames} icon={<IoGameControllerOutline size={tamIcon} color="#74C1ED" />} link="/games" color="#74C1ED" />
+          <CardHome title="Genre" total={total} icon={<GoTag size={tamIcon} color="#EE95C5"/>} link="/games" color="#EE95C5"/>
         </div>
       </section>
     </section>
