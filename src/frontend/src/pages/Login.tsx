@@ -1,58 +1,58 @@
-import React, { useState, FormEvent } from "react";
-import { Navigate } from "react-router-dom";
-import { doSignWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../services/auth";
-import { useAuth } from "../contexts/authContext";
-import { FirebaseError } from "firebase/app";
-import { FaGoogle } from "react-icons/fa";
-import '../styles/login.css';
+import React, { useState, FormEvent } from "react"
+import { Navigate } from "react-router-dom"
+import { doSignWithEmailAndPassword, doSignInWithGoogle, doCreateUserWithEmailAndPassword } from "../services/auth"
+import { useAuth } from "../contexts/authContext"
+import { FirebaseError } from "firebase/app"
+import { FaGoogle } from "react-icons/fa"
+import '../styles/login.css'
 
 const Login: React.FC = () => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [isSigning, setIsSigning] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>("");
-  const [googleError, setGoogleError] = useState<string>("");
-  const { userLoggedIn } = useAuth();
+  const [email, setEmail] = useState<string>("")
+  const [password, setPassword] = useState<string>("")
+  const [isSigning, setIsSigning] = useState<boolean>(false)
+  const [emailError, setEmailError] = useState<string>("")
+  const [passwordError, setPasswordError] = useState<string>("")
+  const [errorMessage, setErrorMessage] = useState<string>("")
+  const [signInError, setSignInError] = useState<string>("")
+  const { userLoggedIn } = useAuth()
 
   const handleRegister = async (e: FormEvent) => {
-    e.preventDefault();
-    setIsSigning(true);
-    setEmailError("");
-    setPasswordError("");
+    e.preventDefault()
+    setEmailError("")
+    setPasswordError("")
+    setSignInError("")
     try {
-      await doCreateUserWithEmailAndPassword(email, password);
+      await doCreateUserWithEmailAndPassword(email, password)
     } catch (error) {
-      setIsSigning(false);
-      handleErrors(error as FirebaseError);
+      handleErrors(error as FirebaseError)
     }
   };
 
   const handleSignIn = async (e: FormEvent) => {
     e.preventDefault();
     if (!isSigning) {
-      setIsSigning(true);
-      setEmailError("");
-      setPasswordError("");
+      setEmailError("")
+      setPasswordError("")
+      setSignInError("")
       try {
-        await doSignWithEmailAndPassword(email, password);
+        await doSignWithEmailAndPassword(email, password)
       } catch (error) {
-        setIsSigning(false);
-        handleErrors(error as FirebaseError);
+        handleErrors(error as FirebaseError)
       }
     }
   };
 
   const onGoogleSignIn = async (e: FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!isSigning) {
-      setIsSigning(true);
-      setGoogleError("");
+      setEmailError("")
+      setPasswordError("")
+      setErrorMessage("")
+      setSignInError("")
       try {
-        await doSignInWithGoogle();
+        await doSignInWithGoogle()
       } catch (error) {
-        setIsSigning(false);
-        handleErrors(error as FirebaseError);
+        handleErrors(error as FirebaseError)
       }
     }
   };
@@ -60,45 +60,29 @@ const Login: React.FC = () => {
   const handleErrors = (error: FirebaseError) => {
     const errorCode = error.code;
     switch (errorCode) {
-      case "auth/invalid-email":
-        setEmailError("Invalid email format.");
-        break;
+      case "auth/invalid-credential":
+        setSignInError("Invalid e-mail or password.")
+        break
       case "auth/email-already-in-use":
-        setEmailError("Email already exists.");
-        break;
-      case "auth/user-disabled":
-        setEmailError("User account is disabled.");
-        break;
-      case "auth/user-not-found":
-        setEmailError("This email isn't registered.");
-        break;
+        setEmailError("Email already exists.")
+        break
       case "auth/weak-password":
-        setPasswordError("Password should be at least 6 characters.");
-        break;
-      case "auth/wrong-password":
-        setPasswordError("Incorrect password.");
-        break;
-      case "auth/popup-closed-by-user":
-        setGoogleError("Popup was closed before authentication completed.");
-        break;
-      case "auth/account-exists-with-different-credential":
-        setGoogleError("An account already exists with the same e-mail.");
-        break;
+        setPasswordError("Password should be at least 6 characters.")
+        break
       default:
-        setEmailError("An unknown error occurred, please try again.");
-        setPasswordError("An unknown error occurred, please try again.");
-        setGoogleError("An unknown error occurred, please try again.");
-        break;
+        setErrorMessage("An unknown error occurred, please try again.")
+        break
     }
   };
 
   const signMode = () => {
     setIsSigning(!isSigning);
-    setEmail("");
-    setPassword("");
-    setEmailError("");
-    setPasswordError("");
-    setGoogleError("");
+    setEmail("")
+    setPassword("")
+    setEmailError("")
+    setPasswordError("")
+    setErrorMessage("")
+    setSignInError("")
   };
 
   return (
@@ -114,6 +98,8 @@ const Login: React.FC = () => {
               ? "Create your account"
               : "Enter your credentials to access your account"}
           </p>
+          {errorMessage && <span className="errors">{errorMessage}</span>}
+          {signInError && <span className="errors">{signInError}</span>}
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -139,8 +125,8 @@ const Login: React.FC = () => {
             <a
               className="signUpA"
               onClick={(e) => {
-                e.preventDefault();
-                signMode();
+                e.preventDefault()
+                signMode()
               }}
             >
               {isSigning ? "Already have an account? Sign In" : "Don't have an account? Sign Up"}
@@ -154,11 +140,10 @@ const Login: React.FC = () => {
           >
             <FaGoogle className="google-icon" /> <span>SIGN IN WITH GOOGLE</span>
           </button>
-          {googleError && <span className="errors">{googleError}</span>}
         </form>
       </div>
     </section>
   );
 };
 
-export default Login;
+export default Login
