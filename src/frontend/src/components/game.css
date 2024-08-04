@@ -40,7 +40,7 @@ td:last-child{
     color: #07871a;
 }
 
-@media(max-width: 768px){ /* Responsividade gameList + game */
+@media(max-width: 768px){ 
 
     .tbl thead{
         display: none;
