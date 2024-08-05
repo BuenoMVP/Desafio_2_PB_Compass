@@ -1,16 +1,16 @@
 #game-list-section {
-    padding-left: 13vw;
-    transition: .4s;
+  padding-left: 13vw;
+  transition: 0.4s;
 }
 
 @media (width <= 1240px) and (width > 608px) {
-    #game-list-section {
-        padding-left: 65px;
-    }
+  #game-list-section {
+    padding-left: 65px;
+  }
 }
 
 @media (width <= 608px) {
-    #game-list-section {
-        padding-left: 65px;
-    }
+  #game-list-section {
+    padding-left: 65px;
+  }
 }

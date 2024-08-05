@@ -1,152 +1,151 @@
-#login-section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg,#103314, #089B1F) ;
-    height: 100vh;
-    width: 100%;
+#login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, #103314, #089b1f);
+  height: 100vh;
+  width: 100%;
 }
 
 .signInContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border-radius: 20px;
-    width: 30em;
-    padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 30em;
+  padding: 1.5rem;
 }
 
-.login-header{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.signInContainer h1{
-    font-size: 2rem;
-    border-left: 0.4rem solid #089B1F;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding-left: 0.6rem;
+.signInContainer h1 {
+  font-size: 2rem;
+  border-left: 0.4rem solid #089b1f;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding-left: 0.6rem;
 }
 
-.signInContainer h2{
-    text-align: center;
-    padding-bottom: 0.5rem;
+.signInContainer h2 {
+  text-align: center;
+  padding-bottom: 0.5rem;
 }
 
-.signInContainer p{
-    font-size: 14px;
-    color: #6C6C6C;
-    padding-bottom: 1rem;
-    text-align: center;
+.signInContainer p {
+  font-size: 14px;
+  color: #6c6c6c;
+  padding-bottom: 1rem;
+  text-align: center;
 }
 
-.signInContainer label{
-    display: flex;
-    align-items: start;
-    justify-content: start;
-    padding-bottom: 0.5rem;
-    padding-top: 1rem;
+.signInContainer label {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  padding-bottom: 0.5rem;
+  padding-top: 1rem;
 }
 
-.signInContainer input{
-    width: 100%;
-    height: 3rem;
-    font-size: 1rem;
-    padding-left: 1rem;
-    border: 1px solid #E5E5E5;
+.signInContainer input {
+  width: 100%;
+  height: 3rem;
+  font-size: 1rem;
+  padding-left: 1rem;
+  border: 1px solid #e5e5e5;
 }
 
-.signInContainer input::placeholder{
-    color: #CDCDCD;
-    font-size: 0.8rem;
+.signInContainer input::placeholder {
+  color: #cdcdcd;
+  font-size: 0.8rem;
 }
 
-.errors{
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
-    color: #cd4949;
-    font-size: 0.9rem;
+.errors {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  color: #cd4949;
+  font-size: 0.9rem;
 }
 
-.error{
-    text-align: center;
+.error {
+  text-align: center;
 }
 
-.signInContainer button{
-    cursor: pointer;
-    border: none;
-    height: 3rem;
-    border-radius: 6px;
+.signInContainer button {
+  cursor: pointer;
+  border: none;
+  height: 3rem;
+  border-radius: 6px;
 }
 
-.signInButton{
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    color: #fff;
-    background-color: #089B1F;
+.signInButton {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  background-color: #089b1f;
 }
 
-.signInButton:hover{
-    background-color: #07871a;
+.signInButton:hover {
+  background-color: #07871a;
 }
 
-.switch{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.signInContainer a{
-    box-sizing: border-box;
-    text-align: center;
-    color:#089B1F;
-    text-decoration: underline;
-    cursor: pointer;
-    padding-bottom: 1rem;
-    font-size: 0.9rem;
+.signInContainer a {
+  box-sizing: border-box;
+  text-align: center;
+  color: #089b1f;
+  text-decoration: underline;
+  cursor: pointer;
+  padding-bottom: 1rem;
+  font-size: 0.9rem;
 }
 
- a:hover{
-    color: #07871a;
+a:hover {
+  color: #07871a;
 }
 
-.googleButton{
-    background-color: #4184F3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
+.googleButton {
+  background-color: #4184f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
 }
 
-.googleButton:hover{
-    background-color: #3d78d7;
+.googleButton:hover {
+  background-color: #3d78d7;
 }
 
-.googleButton:disabled{
-    display: none;
+.googleButton:disabled {
+  display: none;
 }
 
-.googleButton span{
-    padding-left: 1rem;
+.googleButton span {
+  padding-left: 1rem;
 }
 
-.google-icon{
-    font-size: 1.5rem;
-    color: #fff;
+.google-icon {
+  font-size: 1.5rem;
+  color: #fff;
 }
-
 
 #login-form {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (width < 490px) {
-    .signInContainer {
-        width: 90%;
-    }
+  .signInContainer {
+    width: 90%;
+  }
 }

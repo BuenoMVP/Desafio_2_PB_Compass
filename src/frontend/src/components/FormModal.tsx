@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import api from '../services/api';
-import './FormModal.css';
-import { useAuth } from '../contexts/authContext';
+import { useState, useEffect } from "react";
+import api from "../services/api";
+import "./FormModal.css";
+import { useAuth } from "../contexts/authContext";
 
 interface FormModalProps {
   onClose: () => void;
@@ -16,47 +16,58 @@ interface FormModalProps {
   };
 }
 
-const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) => {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
-  const [category, setCategory] = useState('Action')
-  const [date, /* setDate */] = useState('')
-  const { currentUser } = useAuth()
+const FormModal: React.FC<FormModalProps> = ({
+  onClose,
+  fetchGames,
+  gameData,
+}) => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("Action");
+  const [date /* setDate */] = useState("");
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     if (gameData) {
-      setName(gameData.name)
-      setDescription(gameData.description)
-      setPrice(gameData.price.toString())
-      setCategory(gameData.category)
+      setName(gameData.name);
+      setDescription(gameData.description);
+      setPrice(gameData.price.toString());
+      setCategory(gameData.category);
       /* setDate(gameData.date) */
     }
-  }, [gameData])
+  }, [gameData]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!currentUser) {
-      console.error('No user is logged in.')
-      return
+      console.error("No user is logged in.");
+      return;
     }
 
-    const loginId = currentUser.uid; 
-    const game = { name, description, price: Number(price), category, date, loginId }
+    const loginId = currentUser.uid;
+    const game = {
+      name,
+      description,
+      price: Number(price),
+      category,
+      date,
+      loginId,
+    };
 
     try {
       if (gameData) {
-        await api.put(`/games/${gameData.id}`, game)
+        await api.put(`/games/${gameData.id}`, game);
       } else {
-        await api.post('/games', game)
+        await api.post("/games", game);
       }
-      fetchGames()
-      onClose()
+      fetchGames();
+      onClose();
     } catch (error) {
-      console.error('Erro ao salvar jogo', error)
+      console.error("Erro ao salvar jogo", error);
     }
-  }
+  };
 
   return (
     <div className="form-modal-container">
@@ -64,19 +75,38 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+            <input
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="description">Description</label>
-            <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+            <input
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="price">Price</label>
-            <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
+            <input
+              type="number"
+              name="price"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="category">Category</label>
-            <select name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
+            <select
+              name="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
               <option value="Action">Action</option>
               <option value="Shooter">Shooter</option>
               <option value="Fighting">Fighting</option>
@@ -88,12 +118,16 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
               <option value="Adventure">Adventure</option>
             </select>
           </div>
-          <button type="submit" className="form-submit-btn">Submit</button>
-          <button type="button" className="form-cancel-btn" onClick={onClose}>Cancel</button>
+          <button type="submit" className="form-submit-btn">
+            Submit
+          </button>
+          <button type="button" className="form-cancel-btn" onClick={onClose}>
+            Cancel
+          </button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormModal
+export default FormModal;

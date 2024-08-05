@@ -1,19 +1,19 @@
-import React, { ReactElement } from 'react'
-import { Navigate } from 'react-router-dom'
-import { useAuth } from '../contexts/authContext'
+import React, { ReactElement } from "react";
+import { Navigate } from "react-router-dom";
+import { useAuth } from "../contexts/authContext";
 
 interface ProtectedRoute {
-  children: ReactElement
+  children: ReactElement;
 }
 
 const ProtectedRoute: React.FC<ProtectedRoute> = ({ children }) => {
-  const { userLoggedIn } = useAuth()
+  const { userLoggedIn } = useAuth();
 
   if (!userLoggedIn) {
-    return <Navigate to="/" replace />
+    return <Navigate to="/" replace />;
   }
 
-  return children
-}
+  return children;
+};
 
-export default ProtectedRoute
+export default ProtectedRoute;

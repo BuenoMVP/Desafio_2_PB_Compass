@@ -1,80 +1,81 @@
-.delete-modal-container{
-    position: fixed;
-    z-index: 3;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0, 0, 0, 0.4);
-} 
-
-.delete-modal{
-    border-radius: 5px;
-    padding: 0 2rem;
-    padding-top: 1.5rem;
-    background-color: white;
-    width: 25em;
+.delete-modal-container {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.delete-group{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-    text-align: center;
+.delete-modal {
+  border-radius: 5px;
+  padding: 0 2rem;
+  padding-top: 1.5rem;
+  background-color: white;
+  width: 25em;
 }
 
-.delete-btn, .cancel-btn{
-    display: block;
-    margin: auto;
-    font-size: 1.0rem;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem;
-    padding: 0.3rem 2.5rem;
-    margin-bottom: 0.8rem;
-    width: 100%;
-    cursor: pointer;
+.delete-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
-.delete-btn{
-    background: #cd4949;
+.delete-btn,
+.cancel-btn {
+  display: block;
+  margin: auto;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.3rem 2.5rem;
+  margin-bottom: 0.8rem;
+  width: 100%;
+  cursor: pointer;
 }
 
-.delete-btn:hover{
-    background: #a53c3c;
+.delete-btn {
+  background: #cd4949;
 }
 
-.cancel-btn{
-    background: #827474;
+.delete-btn:hover {
+  background: #a53c3c;
 }
 
-.cancel-btn:hover{
-    background: #635959;
+.cancel-btn {
+  background: #827474;
 }
 
-.delete-group p{
-    color: rgb(0, 0, 0);
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
+.cancel-btn:hover {
+  background: #635959;
 }
 
-.delete-group h2{
-    font-size: 1.5rem;
-    margin-bottom: 0.8rem;
+.delete-group p {
+  color: rgb(0, 0, 0);
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.delete-group h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
 @media (width < 420px) {
-    .delete-modal{
-        width: 90%;
-    }
+  .delete-modal {
+    width: 90%;
+  }
 
-    .delete-btn {
-        height: 10vh;
-    }
-    .cancel-btn {
-        height: 10vh;
-    }
+  .delete-btn {
+    height: 10vh;
+  }
+  .cancel-btn {
+    height: 10vh;
+  }
 }
