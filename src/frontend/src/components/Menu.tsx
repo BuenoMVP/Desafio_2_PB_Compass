@@ -7,6 +7,7 @@ import ImageId from "./ImageId"
 import "./menu.css"
 import { doSignOut } from "../services/auth"
 import { useState } from "react"
+import { HiOutlinePlayCircle } from "react-icons/hi2"
 
 const tamIcon = 20
 
@@ -38,6 +39,7 @@ const Menu = (props: MenuProps) => {
           <h1>CRUD OPERATIONS</h1>
         </div>
       </header>
+      <HiOutlinePlayCircle id="open-menu" size={22} color="#C4C4C4" />
       <div id="image-box" style={{ display: openMenu ? "flex" : "" }}>
         <ImageId text={props.email} size="10vh" fontSize="4vh" />
       </div>

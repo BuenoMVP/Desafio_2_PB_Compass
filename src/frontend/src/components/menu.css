@@ -25,6 +25,15 @@
     justify-content: center;
     font-size: 15px;
     gap: 1vh;
+    position: relative;
+}
+
+#open-menu {
+    position: absolute;
+    top: 1rem;
+    right: -3rem;
+    cursor: pointer;
+    transform: rotate(180deg);
 }
 
 header {
@@ -104,6 +113,10 @@ header {
         display: none;
         font-size: 13px;
         transition: .4s;
+    }
+
+    #open-menu {
+        display: none;
     }
 
     #hamburger {
