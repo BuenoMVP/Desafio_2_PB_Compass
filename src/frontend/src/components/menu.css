@@ -25,6 +25,19 @@
     justify-content: center;
     font-size: 15px;
     gap: 1vh;
+    position: relative;
+}
+
+#open-menu {
+    position: absolute;
+    top: 1rem;
+    right: -3rem;
+    cursor: pointer;
+    transform: rotate(180deg);
+}
+
+header {
+    width: 100%;
 }
 
 #hamburger {
@@ -65,8 +78,6 @@
     background-color: #089b1e33;
 }
 
-/* Ajustando sidebar com icones */
-
 @media (width < 1824px) and (width > 1240px){
     #sidebar {
         transition: .4s;
@@ -100,11 +111,17 @@
     
     #title {
         display: none;
+        font-size: 13px;
         transition: .4s;
+    }
+
+    #open-menu {
+        display: none;
     }
 
     #hamburger {
         display: flex;
+        padding-left: 1.1rem;
         cursor: pointer;
         transition: .4s;
     }

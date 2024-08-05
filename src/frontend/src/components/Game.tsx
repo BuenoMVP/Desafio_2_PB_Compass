@@ -23,6 +23,17 @@ const Game: React.FC<GameProps> = (props) => {
   const [formModalOpen, setFormModalOpen] = useState(false)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
 
+  function shortInfo (word:string) {
+    if (word.length > 16 ) {
+      return word.slice(0,16)+"..."
+    } else {
+      return word
+    }
+  }
+
+  const name = shortInfo(props.name)
+  const description = shortInfo(props.description)
+
   const handleDelete = async () => {
     try {
       await api.delete(`/games/${props.id}`)
@@ -45,9 +56,9 @@ const Game: React.FC<GameProps> = (props) => {
 
   return (
     <tr>
-      <td><ImageId text={props.name} size="inherit" fontSize="1.5rem" /></td>
-      <td>{props.name}</td>
-      <td>{props.description}</td>
+      <td><ImageId text={props.name} size="4rem" fontSize="1.5rem" colorBackground="#E1F2E1" radius="10px"/></td>
+      <td>{name}</td>
+      <td>{description}</td>
       <td>R$ {props.price}</td>
       <td>{props.category}</td>
       <td>{formattedDate}</td>

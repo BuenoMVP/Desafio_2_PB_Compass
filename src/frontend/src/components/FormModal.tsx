@@ -42,7 +42,7 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
       return
     }
 
-    const loginId = currentUser.uid; // Getting the loginId from currentUser
+    const loginId = currentUser.uid; 
     const game = { name, description, price: Number(price), category, date, loginId }
 
     try {
@@ -88,10 +88,6 @@ const FormModal: React.FC<FormModalProps> = ({ onClose, fetchGames, gameData }) 
               <option value="Adventure">Adventure</option>
             </select>
           </div>
-          {/* <div className="form-group">
-            <label htmlFor="date">Date of include</label>
-            <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} />
-          </div> */}
           <button type="submit" className="form-submit-btn">Submit</button>
           <button type="button" className="form-cancel-btn" onClick={onClose}>Cancel</button>
         </form>
