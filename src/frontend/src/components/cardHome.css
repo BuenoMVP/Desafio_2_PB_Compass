@@ -1,30 +1,30 @@
 #cardHome {
-    font-size: 1rem;
-    display: flex;
-    flex-direction: column;
-    border: none;
-    border-radius: 4px;
-    width: 15rem;
-    height: 9rem;
-    padding: 1rem;
-    text-decoration: none;
-    color: #000;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 4px;
+  width: 15rem;
+  height: 9rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: #000;
 }
 
 #cardHome div {
-    display: inherit;
-    flex-direction: inherit;
-    width: 50%;
-    height: 60%;
-    justify-content: space-between;
+  display: inherit;
+  flex-direction: inherit;
+  width: 50%;
+  height: 60%;
+  justify-content: space-between;
 }
 
 #cardHome span {
-    display: inherit;
-    justify-content: end;
-    align-items: end;
-    font-size: 2rem;
-    font-weight: bold;
-    width: 100%;
-    height: 40%;
+  display: inherit;
+  justify-content: end;
+  align-items: end;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100%;
+  height: 40%;
 }

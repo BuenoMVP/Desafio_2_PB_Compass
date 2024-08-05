@@ -1,70 +1,70 @@
-#game-list-column{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
+#game-list-column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
 }
 
-.container-game-list{
-    width: 100%;
-    height: 100%;
-    background-color: #F8F8F8;
-    overflow: hidden;
-    overflow-y: scroll;
-    padding: 1.9rem 1rem;
-    font-family: 'Montserrat';
+.container-game-list {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f8f8;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 1.9rem 1rem;
+  font-family: "Montserrat";
 }
 
-.container-game-list::-webkit-scrollbar{
-    background-color: #dfdfdf;
+.container-game-list::-webkit-scrollbar {
+  background-color: #dfdfdf;
 }
 
-.container-game-list::-webkit-scrollbar-thumb{
-    border-radius: 4px;
-    background-color: #089B1F;
+.container-game-list::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #089b1f;
 }
 
-.tbl-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    border-bottom: 1px solid #E5E5E5;
-    padding: 1rem 0.5rem;
+.tbl-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0.5rem;
 }
 
-.tbl-header h2{
-    font-size: 1.5rem;
+.tbl-header h2 {
+  font-size: 1.5rem;
 }
 
-.add-new-game-btn{
-    font-size: 1.0rem;
-    background: #089B1F;
-    color: #fff;
-    border: none;
-    border-radius: 0.5rem; 
-    padding: 1rem 2.5rem;
+.add-new-game-btn {
+  font-size: 1rem;
+  background: #089b1f;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem 2.5rem;
 }
 
-.add-new-game-btn:hover{
-    background: #07871a;
-    cursor: pointer;
+.add-new-game-btn:hover {
+  background: #07871a;
+  cursor: pointer;
 }
 
-.tbl{
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 1rem;
+.tbl {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
 }
 
-.tbl thead tr th{
-    font-size: 0.9rem;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    text-align: left;
-    color: #ACACAC;
+.tbl thead tr th {
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  text-align: left;
+  color: #acacac;
 }
 
-thead tr th:first-child{
-    padding-right: 9rem;
+thead tr th:first-child {
+  padding-right: 9rem;
 }

@@ -1,28 +1,28 @@
 .link {
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 1rem;
-    margin-top: 10px;
-    height: 3rem;
-    color: #000;
-    cursor: pointer;
-    gap: 1vh;
-    transition: .4s;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 1rem;
+  margin-top: 10px;
+  height: 3rem;
+  color: #000;
+  cursor: pointer;
+  gap: 1vh;
+  transition: 0.4s;
 }
 
 .link:hover {
-    color: #000;
+  color: #000;
 }
 
-@media (width < 1240px){
-    #menu-button-text {
-        display: none;
-    }
+@media (width < 1240px) {
+  #menu-button-text {
+    display: none;
+  }
 
-    .link {
-        padding: 0;
-        height: 2rem;
-    }
+  .link {
+    padding: 0;
+    height: 2rem;
+  }
 }
