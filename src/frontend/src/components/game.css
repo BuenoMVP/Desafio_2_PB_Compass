@@ -3,20 +3,22 @@
     font-weight: normal;
     text-align: left;
     background-color: #fff;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     color: #000;
 }
 
 tbody tr td:first-child{
     text-align: center;
-    color: #089B1F;
     font-weight: 600;
 }
 
 
 td:first-child{
   border-radius: 10px 0 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
@@ -69,10 +71,14 @@ td:last-child{
         text-align: center;
         position: relative;
         border: 1px solid #aab7b8;
+        padding: 2rem 0;
     }
 
     td:first-child{
         border-radius: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
       
       
